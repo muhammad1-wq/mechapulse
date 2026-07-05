@@ -18,7 +18,12 @@ const UPLOAD_DIR = path.join(__dirname, "uploads");
 if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR);
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "https://mechapulse.vercel.app",
+  credentials: true
+}));
+
 app.use(express.json());
 app.use("/uploads", express.static(UPLOAD_DIR));
 
